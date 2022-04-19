@@ -5,6 +5,7 @@ import WindowSizes from './components/WindowSizes';
 import FlexContainer from './components/FlexContainer';
 import Container from './components/Grid/Container';
 import ToDoList from './components/ToDoList';
+import CounterPage from './pages/CounterPage';
 
 import {
   BrowserRouter as Router,
@@ -24,6 +25,7 @@ function App (props) {
       <li><Link to='/components/FlexContainer'>FlexContainer</Link></li>
       <li><Link to='/components/Grid/Container'>GridContainer</Link></li>
       <li><Link to='/components/ToDoList'>ToDoList</Link></li>
+      <li><Link to='/counter'>CounterPage</Link></li>
     </ul>
     <Routes>
      <Route path='/' element={<Home/> }/>
@@ -32,6 +34,7 @@ function App (props) {
       <Route path='/components/FlexContainer' element={<FlexContainer children={[1,23, 654]}/>}/>
       <Route path='/components/Grid/Container' element={<Container />}/>
       <Route path='/components/ToDoList' element={<ToDoList />}/>
+      <Route path='/counter' element={<CounterPage />}/>
 
       <Route path='*' element={<PageNotFound />}/>
 
