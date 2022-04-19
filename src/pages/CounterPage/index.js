@@ -15,6 +15,7 @@ class CounterPage extends Component {
     });
   };
   render () {
+
     return (
       <>
         <input
