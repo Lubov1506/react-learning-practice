@@ -24,7 +24,7 @@ class CounterPage extends Component {
           onChange={this.inputHandler}
           name='step'
           min='1'
-          max='50'
+          max='10000'
         />
         <Counter step={this.state.step} />
       </>
