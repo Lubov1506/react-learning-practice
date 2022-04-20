@@ -8,8 +8,7 @@ const InnerChild = (props) => {
         {(contextValue) =>{
             const {firstName, lastName} = contextValue;
         return (
-        <div style={{border: '3px solid black', padding: '25px'}}>InnerChild 
-        {firstName} {lastName}</div>              
+        <div style={{border: '3px solid black', padding: '25px'}}>InnerChild {firstName} {lastName}</div>              
         )
     }}
         </UserContext.Consumer>
