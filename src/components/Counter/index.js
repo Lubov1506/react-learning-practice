@@ -41,8 +41,8 @@ class Counter extends PureComponent {
         <h1>Count: {count}</h1>
         <h1>Step: {step}</h1>
         <div>
-          <button onClick={this.increment}>+</button>
           <button onClick={this.decrement}>-</button>
+          <button onClick={this.increment}>+</button>          
           <button
             onClick={() => {
               this.setState({
