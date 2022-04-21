@@ -11,7 +11,7 @@ const UlList = () => {
             <li>Li</li>
             <li>Li</li>
             <li>
-                   <img src={avatar}/> {name} {lastName}
+                   <img src={avatar} style={{width: '70px'}}/> {name} {lastName}
             </li>
         </ul>
     );    

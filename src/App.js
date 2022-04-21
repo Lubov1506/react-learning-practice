@@ -1,34 +1,53 @@
 import './App.css';
 import React, { Component } from 'react';
 import Tree from './components/Tree';
-import {UserContext} from '\./contexts'
-import {PersonContext} from './contexts/Avatar';
-import PersonTree from './components/PersonTree';
+import { UserContext, ThemeContext } from './contexts';
+import Header from './components/Header';
+import CONSTANTS from './constants';
+const { THEMES } = CONSTANTS;
+/*
+1. Создаем контекст
+2. Предоставляем данные (создаем Provider)
+3. Получаем данные, подключившись к контексту
+*/
+
 class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       user: {
-        is: 1,
+        id: 1,
         firstName: 'John',
-        lastName: 'Smitt',
-        imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS8z3HlHdqe9YFyKQ1eYldQjeBsitM5O5hpA&usqp=CAU',
+        lastName: 'Doe',
+        imageSrc:
+          'https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png',
       },
-      person: {
-        name: 'Liliya',
-        lastName: 'Sun',
-        avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS8z3HlHdqe9YFyKQ1eYldQjeBsitM5O5hpA&usqp=CAU',
-      }
+      theme: THEMES.DARK,
     };
   }
 
+  logOut = () => {
+    this.setState({
+      user: {},
+    });
+  };
+
+  setTheme = theme => {
+    this.setState({ theme });
+  };
+
   render () {
-    
+    const { theme, user } = this.state;
     return (
-    <PersonContext.Provider value={this.state.person}>
-      <PersonTree />
-    </PersonContext.Provider>
-    )
+      <>
+        <ThemeContext.Provider value={[theme, this.setTheme]}>
+          <UserContext.Provider value={[user, this.logOut]}>
+            <Header />
+            <Tree />
+          </UserContext.Provider>
+        </ThemeContext.Provider>
+      </>
+    );
   }
 }
 

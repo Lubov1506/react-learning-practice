@@ -1,15 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Parent from './Parent';
+import { ThemeContext } from '../../contexts';
+import style from './Tree.module.css';
+import cx from 'classnames';
+import CONSTANTS from '../../constants';
+const { THEMES } = CONSTANTS;
 
-class Tree extends Component {
-    render() {
+const Tree = props => {
+  return (
+    <ThemeContext.Consumer>
+      {([theme, setTheme]) => {
+        const classNames = cx(style.container, {
+          [style.ligthTheme]: theme === THEMES.LIGHT,
+          [style.darkTheme]: theme === THEMES.DARK,
+        });
         return (
-            <div style={{border: '3px solid black', padding: '25px'}}>
-                Tree
-                <Parent/>
-            </div>
+          <div className={classNames}>
+            Tree
+            <Parent />
+          </div>
         );
-    }
-}
+      }}
+    </ThemeContext.Consumer>
+  );
+};
 
 export default Tree;
