@@ -13,6 +13,7 @@ const Tree = props => {
     [style.ligthTheme]: theme === THEMES.LIGHT,
     [style.darkTheme]: theme === THEMES.DARK,
   });
+  
   return (
     <div className={classNames}>
       Tree

@@ -5,6 +5,8 @@ import cx from 'classnames';
 import CONSTANTS from '../../constants';
 import Switch from '@mui/material/Switch';
 import { withTheme, withUser } from '../../HOCs';
+
+
 const { THEMES } = CONSTANTS;
 
 class Header extends Component {
@@ -15,6 +17,7 @@ class Header extends Component {
       [style.darkTheme]: theme === THEMES.DARK,
     });
     const nextTheme = theme === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK;
+
     return (
       <div className={classNames}>
         <Switch
@@ -36,5 +39,6 @@ class Header extends Component {
 }
 
 const HeaderWithTheme = withTheme(Header);
-const WithThemeUser = withUser(HeaderWithTheme);
-export default WithThemeUser;
+const HeaderWithUserWithTheme = withUser(HeaderWithTheme);
+
+export default HeaderWithUserWithTheme;

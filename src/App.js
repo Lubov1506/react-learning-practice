@@ -4,6 +4,7 @@ import Tree from './components/Tree';
 import { UserContext, ThemeContext } from './contexts';
 import Header from './components/Header';
 import CONSTANTS from './constants';
+import SignUpForm from './components/SignUpForm';
 const { THEMES } = CONSTANTS;
 /*
 1. Создаем контекст
@@ -40,12 +41,13 @@ class App extends React.Component {
     const { theme, user } = this.state;
     return (
       <>
-        <ThemeContext.Provider value={[theme, this.setTheme]}>
+        <SignUpForm />
+{/*          <ThemeContext.Provider value={[theme, this.setTheme]}>
           <UserContext.Provider value={[user, this.logOut]}>
             <Header />
-            <Tree />
+            <TreeWithTheme />
           </UserContext.Provider>
-        </ThemeContext.Provider>
+        </ThemeContext.Provider>  */}
       </>
     );
   }
