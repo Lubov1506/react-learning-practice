@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component, useState, useEffect } from 'react';
 import Home from './components/Home';
-
+import Stopwatch from './components/Stopwatch';
 
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
   render () {
     return(
       <>
-<Home/>
+<Stopwatch/>
       </>
     );
   }
