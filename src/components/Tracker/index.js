@@ -48,7 +48,7 @@ const Tracker = () => {
     }
     )
        return (
-        <div style={{height: '100vh', border: '2px solid red'}} onMouseMove={handleMouseMove} >
+        <div style={{height: '100vh', border: '4px solid red'}} onMouseMove={handleMouseMove} >
             <h1>Mouse Tracker</h1>
             <h3>x: {coordinates.x}</h3>
             <h3>y: {coordinates.y}</h3>
