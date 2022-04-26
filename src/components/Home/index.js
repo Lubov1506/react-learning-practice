@@ -1,18 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Tracker from '../Tracker';
 import Clicker from '../Clicker';
+import Stopwatch from '../Stopwatch';
+import { UserContext } from '../../contexts';
+
 
 const Home = () => {
-  const [isVisible, setVisibility] = useState(true);
-
-  const handler = () => {
-    setVisibility(!isVisible);
-  };
-
+ const userValue = useContext(UserContext)
   return (
     <div>
-      <button onClick={handler}>Change visibility</button>
-      {isVisible && <Clicker />}
+         <h1>{userValue.name}</h1>
     </div>
   );
 };

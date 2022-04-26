@@ -2,24 +2,27 @@ import './App.css';
 import React, { Component, useState, useEffect } from 'react';
 import Home from './components/Home';
 import Stopwatch from './components/Stopwatch';
+import {UserContext} from './contexts';
 
-
-class App extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-
-    }
-  }
-
-  render () {
-    return(
+const App = () => {
+  const [user, setUser] = useState({
+    id: 1,
+    name: 'John Snow'
+  })
+  return(
       <>
-<Stopwatch/>
+      <UserContext.Provider value={user}>
+        <Home/>
+      </UserContext.Provider>
+
       </>
     );
-  }
+  
 }
+
+
+
+
 
 export default App;
 
