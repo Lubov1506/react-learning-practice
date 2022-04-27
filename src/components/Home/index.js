@@ -1,19 +1,23 @@
-import React, { useState, useContext, useCallback, useEffect } from 'react';
+import React, { useState, useContext, useCallback, useEffect, useMemo } from 'react';
 import { ThemeContext } from '../../contexts';
 import CONSTANTS from '../../constants';
 import HomeChild from '../HomeChild';
 const { THEMES } = CONSTANTS;
 
 const stylesMap = {
+  [THEMES.LIGHT]: {
+    backgroundColor: 'white',
+    color: 'black',
+  },  
   [THEMES.DARK]: {
     backgroundColor: 'black',
     color: 'white',
   },
-  [THEMES.LIGHT]: {
-    backgroundColor: 'white',
-    color: 'black',
-  },
+
 };
+function computeValue  (num) {
+  return num **3;
+}
 
 const Home = () => {
   const [theme, setTheme] = useContext(ThemeContext);
@@ -38,9 +42,13 @@ const Home = () => {
   const changeValue = useCallback( ({ target: { value } }) => {
     setValue(Number(value))
   }, []);
+
+  const layoutValue = useMemo(()=>computeValue(value), [value]);
+  
+
   return (
     <div style={stylesMap[theme]}>
-      <h1>Home</h1>
+      <h1>{layoutValue}</h1>
       <input type='number' value={value} onChange={changeValue} />
       <button onClick={switchTheme}>Switch theme</button>
       <HomeChild callback={logValue} />
