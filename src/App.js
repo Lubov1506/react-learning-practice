@@ -8,16 +8,20 @@ import CONSTANTS from './constants';
 import Tree from './components/Tree';
 import Loader from './components/Loader';
 import CustomClicker from './components/Clicker/CustomClicker';
-
+import SignUpPage from './pages/SignUpPage';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 const { THEMES } = CONSTANTS;
 
 const App = () => {
   const [theme, setTheme] = useState(THEMES.LIGHT);
   return (
     <div>
-      <ThemeContext.Provider>
-   
-      </ThemeContext.Provider>
+      <SignUpPage/>
     </div>
   );
 };
