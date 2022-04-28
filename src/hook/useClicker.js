@@ -1,14 +1,14 @@
-import React,  {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-export function useClicker  ()  {
-    const [counter, setCounter] = useState(0)
+export function useClicker () {
+  const [counter, setCounter] = useState(0);
 
-    useEffect(()=>{
-        const clickHandler = () => setCounter(counter + 1);
-        document.addEventListener('click', clickHandler);
-        return() => {
-            document.removeEventListener('click', clickHandler)
-        }
-    })
-    return counter;
+  useEffect(() => {
+    const clickHandler = () => setCounter(counter + 1);
+    document.addEventListener('click', clickHandler);
+    return () => {
+      document.removeEventListener('click', clickHandler);
+    };
+  });
+  return counter;
 }

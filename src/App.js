@@ -8,14 +8,15 @@ import CONSTANTS from './constants';
 import Tree from './components/Tree';
 import Loader from './components/Loader';
 import CustomClicker from './components/Clicker/CustomClicker';
+
 const { THEMES } = CONSTANTS;
 
 const App = () => {
   const [theme, setTheme] = useState(THEMES.LIGHT);
   return (
     <div>
-      <ThemeContext.Provider value={[theme, setTheme]}>
-        <CustomClicker />
+      <ThemeContext.Provider>
+   
       </ThemeContext.Provider>
     </div>
   );
