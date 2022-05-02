@@ -1,31 +1,65 @@
 import './App.css';
-import React, { Component, useState, useEffect } from 'react';
-import Home from './components/Home';
-import Stopwatch from './components/Stopwatch';
-import {UserContext, ThemeContext} from './contexts';
-import CONSTANTS from './constants';
-//import Home from './components/Home';
-import Tree from './components/Tree';
+import React, { useState, useReducer } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { ThemeContext, AppContext } from './contexts';
+import {CONSTANTS, ACTIONS } from './constants';
 import Loader from './components/Loader';
-import CustomClicker from './components/Clicker/CustomClicker';
-import SignUpPage from './pages/SignUpPage';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom';
+import Clicker from './components/Clicker';
+import SignUpPage from './pages/SignUpPage'
+import ChatPage from './pages/ChatPage'
+import { reducer } from './reducer';
+
 const { THEMES } = CONSTANTS;
 
 const App = () => {
   const [theme, setTheme] = useState(THEMES.LIGHT);
+
+  const [state, dispatch] = useReducer(reducer, {
+    isMenuOpen: false,
+  });
+
+  const openMenu = () => {
+    dispatch({
+      type: ACTIONS.MENU_OPEN,
+    });
+  };
+
+  const closeMenu = () => {
+    dispatch({
+      type: ACTIONS.MENU_CLOSE,
+    });
+  };
+
   return (
-    <div>
-      <SignUpPage/>
-    </div>
+    <AppContext.Provider value={{ state, openMenu, closeMenu }}>
+      <ThemeContext.Provider value={[theme, setTheme]}>
+        <BrowserRouter>
+          <nav>
+            <ul>
+              <li>
+                <Link to='/loader'>Loader</Link>
+              </li>
+              <li>
+                <Link to='/clicker'>Clicker</Link>
+              </li>
+              <li>
+                <Link to='/signup'>SignUpPage</Link>
+              </li>
+              <li>
+                <Link to='/chat'>ChatPage</Link>
+              </li>
+            </ul>
+          </nav>
+          <Routes>
+            <Route path='/loader' element={<Loader />} />
+            <Route path='/clicker' element={<Clicker />} />
+            <Route path='/signup' element={<SignUpPage />} />
+            <Route path='/chat' element={<ChatPage />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeContext.Provider>
+    </AppContext.Provider>
   );
 };
 
 export default App;
-
-
